@@ -8,7 +8,7 @@ Use `ww {$width}` to set the window to a custom width. Like `ww 1600`.
 Install
 -------
 
-[Download the latest release]().
+[Download the latest release](https://github.com/stroebjo/alfred-window-width/releases).
 
 
 Sources
