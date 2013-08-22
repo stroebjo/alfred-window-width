@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>bundleid</key>
+	<string></string>
+	<key>connections</key>
+	<dict>
+		<key>1F565137-0618-4C1F-9751-52C4B9CB83B5</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7686C74A-A33F-49C2-8231-40F1569A481A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+		<key>7686C74A-A33F-49C2-8231-40F1569A481A</key>
+		<array/>
+		<key>AB775D8F-2499-4CC4-8B59-E425ACF3F413</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>7686C74A-A33F-49C2-8231-40F1569A481A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
+			</dict>
+		</array>
+	</dict>
+	<key>createdby</key>
+	<string>Jonathan Ströbele</string>
+	<key>description</key>
+	<string>Set the window with of the current window.</string>
+	<key>disabled</key>
+	<false/>
+	<key>name</key>
+	<string>Window Width</string>
+	<key>objects</key>
+	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>escaping</key>
+				<integer>63</integer>
+				<key>keyword</key>
+				<string>ww</string>
+				<key>script</key>
+				<string>cat &lt;&lt; EOB
+
+&lt;?xml version="1.0"?&gt;
+&lt;items&gt;
+  &lt;item uid="ww.switchto.smartphone" arg="320"&gt;
+    &lt;title&gt;Smartphone&lt;/title&gt;
+	&lt;subtitle&gt;Set width to smartphone in portrait mode: 320px&lt;/subtitle&gt;
+    &lt;icon&gt;smartphone.png&lt;/icon&gt;
+  &lt;/item&gt;
+
+  &lt;item uid="ww.switchto.smartphonelandscape" arg="480"&gt;
+    &lt;title&gt;Smartphone landscape mode&lt;/title&gt;
+	&lt;subtitle&gt;Set width to smartphone in landscape mode: 480px&lt;/subtitle&gt;
+    &lt;icon&gt;smartphone-landscape.png&lt;/icon&gt;
+  &lt;/item&gt;
+
+  &lt;item uid="ww.switchto.tablet" arg="768"&gt;
+    &lt;title&gt;Tablet&lt;/title&gt;
+	&lt;subtitle&gt;Set width to tablet in portrait mode: 768px&lt;/subtitle&gt;
+    &lt;icon&gt;tablet.png&lt;/icon&gt;
+  &lt;/item&gt;
+
+  &lt;item uid="ww.switchto.tabletlandscape" arg="1024"&gt;
+    &lt;title&gt;Tablet landscape mode&lt;/title&gt;
+	&lt;subtitle&gt;Set width to tablet in landscape mode: 1024px&lt;/subtitle&gt;
+    &lt;icon&gt;tablet-landscape.png&lt;/icon&gt;
+  &lt;/item&gt;
+
+&lt;/items&gt;
+
+EOB</string>
+				<key>title</key>
+				<string>Change the window width</string>
+				<key>type</key>
+				<integer>0</integer>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.scriptfilter</string>
+			<key>uid</key>
+			<string>1F565137-0618-4C1F-9751-52C4B9CB83B5</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>applescript</key>
+				<string>on alfred_script(q)
+
+	tell application "System Events"
+		set frontmostProcess to name of first item of (processes whose frontmost is true)
+		tell process frontmostProcess
+			tell window 1
+				set oldSize to get size
+				set size to {q, item 2 of oldSize}
+			end tell
+		end tell
+	end tell
+
+
+end alfred_script</string>
+				<key>cachescript</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.applescript</string>
+			<key>uid</key>
+			<string>7686C74A-A33F-49C2-8231-40F1569A481A</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>0</integer>
+				<key>keyword</key>
+				<string>ww</string>
+				<key>subtext</key>
+				<string>Define width in pixels as argument</string>
+				<key>text</key>
+				<string>Set window to custom width</string>
+				<key>withspace</key>
+				<true/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>AB775D8F-2499-4CC4-8B59-E425ACF3F413</string>
+			<key>version</key>
+			<integer>0</integer>
+		</dict>
+	</array>
+	<key>readme</key>
+	<string>Workflow to set the width of the window with the current focus.
+
+Use `ww {$width}` to set the window to a custom width. Like `ww 1600`.
+
+The original AppleScript is from Brian Boyer:
+https://gist.github.com/brianboyer/2648545
+
+The lovly icons are made by Loris Grillet:
+http://dribbble.com/shots/1071458-Mobile-Devices-Icons-V3-PSD-EPS-sketch</string>
+	<key>uidata</key>
+	<dict>
+		<key>1F565137-0618-4C1F-9751-52C4B9CB83B5</key>
+		<dict>
+			<key>ypos</key>
+			<real>110</real>
+		</dict>
+		<key>7686C74A-A33F-49C2-8231-40F1569A481A</key>
+		<dict>
+			<key>ypos</key>
+			<real>180</real>
+		</dict>
+		<key>AB775D8F-2499-4CC4-8B59-E425ACF3F413</key>
+		<dict>
+			<key>ypos</key>
+			<real>300</real>
+		</dict>
+	</dict>
+	<key>webaddress</key>
+	<string>http://jonathanstroebele.de</string>
+</dict>
+</plist>
